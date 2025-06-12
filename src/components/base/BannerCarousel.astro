@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+
+// Load image modules from src/assets/carousel/
+const imageModules = import.meta.glob('/src/assets/carousel/*.{jpg,jpeg,png,JPG,PNG}', {
+  eager: true
+});
+
+// Extract Image metadata
+const images = Object.values(imageModules);
+---
+
+<style>
+  .carousel {
+    @apply absolute w-screen h-[30rem] overflow-hidden;
+    top: 6.25rem;
+    left: 0px;
+    z-index: -100;
+  }
+
+  .carousel img {
+    @apply absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity duration-[3000ms] ease-in-out;
+  }
+
+  .carousel img.active {
+    @apply opacity-100 z-10;
+  }
+</style>
+
+<div class="carousel" client:load>
+  {images.map((image, idx) => (
+    <Image
+      src={image.default}
+      alt={`Banner ${idx + 1}`}
+      class={idx === 0 ? 'active' : ''}
+      data-idx={idx}
+    />
+  ))}
+
+  <script type="module">
+    const images = document.querySelectorAll('.carousel img');
+    let current = 0;
+
+    setInterval(() => {
+      images[current].classList.remove('active');
+      current = (current + 1) % images.length;
+      images[current].classList.add('active');
+    }, 5000);
+  </script>
+</div>

@@ -12,7 +12,7 @@ let h1 = h2 * font_scale;
 
 let fontPrimary = "serif";
 let fontPrimaryType = "serif";
-let fontSecondary = "open sans";
+let fontSecondary = "chakra petch";
 let fontSecondaryType = "sans-serif";
 
 fontPrimary = fontPrimary
@@ -60,7 +60,7 @@ module.exports = {
             light: "#bbb",
           },
           bg: {
-            p: "#222",
+            p: "#141414",
             s: "#444",
             t: "#444",
           },
@@ -171,7 +171,7 @@ module.exports = {
     require("@tailwindcss/forms"),
     require("tailwind-bootstrap-grid")({
       generateContainer: false,
-      gridGutterWidth: "2rem",
+      gridGutterWidth: "0rem",
       gridGutters: {
         1: "0.25rem",
         2: "0.5rem",
