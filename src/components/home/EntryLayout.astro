@@ -47,8 +47,8 @@ const { image, imageAlt, title, content, button } = entry.data;
 </BaseLayout>
 
 <script is:inline>
-  window.addEventListener('DOMContentLoaded', () => {
-    // Handle rotating image load-in
+  function animatePage() {
+    // Animate rotating images
     document.querySelectorAll('.rotating-image').forEach(img => {
       img.classList.add('loading');
 
@@ -61,14 +61,27 @@ const { image, imageAlt, title, content, button } = entry.data;
       }, { once: true });
     });
 
-    // Animate word elements in
+    // Animate word text on load
     const words = document.querySelectorAll('.word-left, .word-middle, .word-right');
-    words.forEach((el, index) => {
-      setTimeout(() => {
-        el.classList.add('loaded');
-      }, 100 + index * 200); // optional stagger
+    requestAnimationFrame(() => {
+      words.forEach((el, index) => {
+        el.classList.remove('preload');
+        setTimeout(() => {
+          el.classList.add('loaded');
+        }, 100 + index * 250);
+      });
     });
-  });
+  }
+
+  // Call on initial load
+  if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', animatePage);
+  } else {
+    animatePage();
+  }
+
+  // Optional: Support Astro partial navigation (if using it)
+  document.addEventListener('astro:after-swap', animatePage);
 </script>
 
 <style>
@@ -144,7 +157,7 @@ const { image, imageAlt, title, content, button } = entry.data;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     position: relative;
-    top: 2.25rem;
+    top: 3.25rem;
     max-width: 43.75rem;   /* maximum width */
     width: 100%;         /* allow shrinking */
     margin: 0 auto;
@@ -196,7 +209,7 @@ const { image, imageAlt, title, content, button } = entry.data;
     transition: transform 0.3s ease;
   }
 
-    /* Scale .word-left when hovering on .rotating-image.bottom */
+  /* Scale .word-left when hovering on .rotating-image.bottom */
   .logo-container:has(.rotating-image.top:hover) + .word-container .word-right {
     transform: scale(1.05);
     transition: transform 0.3s ease;

@@ -27,7 +27,7 @@ const images = Object.values(imageModules);
   }
 </style>
 
-<div class="carousel" client:load>
+<div class="carousel">
   {images.map((image, idx) => (
     <Image
       src={image.default}
@@ -37,14 +37,10 @@ const images = Object.values(imageModules);
     />
   ))}
 
-  <script type="module">
-    const images = document.querySelectorAll('.carousel img');
-    let current = 0;
+<script type="module">
+  import { initCarousel } from '/src/scripts/carousel.js';
 
-    setInterval(() => {
-      images[current].classList.remove('active');
-      current = (current + 1) % images.length;
-      images[current].classList.add('active');
-    }, 5000);
-  </script>
+  initCarousel();
+</script>
+
 </div>
