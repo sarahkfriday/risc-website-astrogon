@@ -24,6 +24,10 @@ const social = z.object({
   youtube: z.string().optional(),
 });
 
+const link = z.object({
+  link: z.string().optional()
+})
+
 const about = defineCollection({
   loader: glob({ pattern: "-index.{md,mdx}", base: "./src/content/about" }),
   schema: ({ image }) =>
@@ -33,17 +37,16 @@ const about = defineCollection({
     }),
 });
 
-const authors = defineCollection({
+const people = defineCollection({
   loader: glob({
     pattern: "**\/[^_]*.{md,mdx}",
-    base: "./src/content/authors",
+    base: "./src/content/people",
   }),
   schema: ({ image }) =>
     searchable.extend({
-      email: z.string().optional(),
       image: image().optional(),
       imageAlt: z.string().default(""),
-      social: social.optional(),
+      personalLink: z.string().url().optional(),
     }),
 });
 
@@ -54,7 +57,7 @@ const blog = defineCollection({
       date: z.date().optional(),
       image: image().optional(),
       imageAlt: z.string().default(""),
-      author: reference("authors").optional(),
+      author: reference("people").optional(),
       categories: z.array(z.string()).optional(),
       tags: z.array(z.string()).optional(),
       complexity: z.number().default(1),
@@ -111,7 +114,7 @@ const poetry = defineCollection({
       date: z.date().optional(),
       image: image().optional(),
       imageAlt: z.string().default(""),
-      author: reference("authors").optional(),
+      author: reference("people").optional(),
     }),
 });
 
@@ -142,7 +145,7 @@ const recipes = defineCollection({
       date: z.date().optional(),
       image: image().optional(),
       imageAlt: z.string().default(""),
-      author: reference("authors").optional(),
+      author: reference("people").optional(),
       prepTime: z.number().optional(),
       servings: z.number().optional(),
       diet: z.string().optional(),
@@ -165,7 +168,7 @@ const terms = defineCollection({
 // Export collections
 export const collections = {
   about,
-  authors,
+  people,
   blog,
   docs,
   home,

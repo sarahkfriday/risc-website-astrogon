@@ -1,12 +1,12 @@
 ---
-import type { AuthorsEntry, BlogEntry } from "@/types";
-import EntryLayout from "@components/authors/EntryLayout.astro";
+import type { PeopleEntry, BlogEntry } from "@/types";
+import EntryLayout from "@components/people/EntryLayout.astro";
 import { slugify } from "@lib/textConverter";
 import { getEntries } from "@lib/contentParser";
 import { sortByDate } from "@lib/sortFunctions";
 
 export async function getStaticPaths() {
-  const entries = (await getEntries("authors")) as AuthorsEntry[];
+  const entries = (await getEntries("people")) as PeopleEntry[];
   const paths = entries.map((entry) => ({
     params: {
       entry: entry.id,

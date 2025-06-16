@@ -1,0 +1,24 @@
+---
+import type { PeopleEntry } from "@/types";
+import BaseLayout from "@components/base/BaseLayout.astro";
+import PageHeader from "@components/common/PageHeader.astro";
+import PeopleCard from "@components/people/Card.astro";
+
+interface Props {
+  peopleIndex: PeopleEntry;
+  entries: PeopleEntry[];
+}
+
+const { peopleIndex, entries } = Astro.props;
+---
+
+<BaseLayout title={peopleIndex.data.title} description={peopleIndex.data.description}>
+  <PageHeader title={peopleIndex.data.title} />
+  <section class="section-sm pb-0">
+    <div class="container">
+      <div class="row justify-center">
+        {entries.map((entry) => <PeopleCard entry={entry} />)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

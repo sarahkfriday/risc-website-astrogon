@@ -1,0 +1,37 @@
+---
+import type { PeopleEntry } from "@/types";
+import { plainify } from "@lib/textConverter";
+import { Image } from "astro:assets";
+
+interface Props {
+  entry: PeopleEntry;
+}
+
+const { entry }: Props = Astro.props;
+const { title, image, imageAlt, personalLink} = entry.data;
+
+const bodyBrief = entry.body ? plainify(entry.body?.slice(0, 100)) : null;
+---
+
+<div class="mb-14 md:col-2 lg:col-2">
+  <div
+    class="p-4 text-center intersect:animate-fadeUp opacity-0"
+  >
+    {
+      image && (
+        <Image
+          class="mx-auto mb-4"
+          src={image}
+          alt={imageAlt}
+          width={150}
+          height={200}
+          loading="eager"
+        />
+      )
+    }
+    <h4 class="mb-3">
+      <a href={personalLink} target="_blank" rel="noopener noreferrer">{title}</a>
+    </h4>
+    {bodyBrief && <p class="mb-1">{bodyBrief}</p>}
+  </div>
+</div>

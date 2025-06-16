@@ -97,7 +97,7 @@ tags?.sort((a: string, b: string) => a.localeCompare(b));
         <ul>
           {author && showAuthor && (
             <li class="mr-1 inline-block">
-              <a href={`/authors/${slugify(author.id)}`}>
+              <a href={`/people/${slugify(author.id)}`}>
                 <FaRegUserCircle className={"-mt-1 inline-block"} />
                 {upperHumanize(author.id)}
               </a>
