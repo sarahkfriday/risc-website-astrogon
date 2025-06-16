@@ -47,6 +47,9 @@ const people = defineCollection({
       image: image().optional(),
       imageAlt: z.string().default(""),
       personalLink: z.string().url().optional(),
+      startYear: z.string().default("2022"), 
+      endYear: z.string().default("present"),
+      pronouns: z.string().optional()
     }),
 });
 

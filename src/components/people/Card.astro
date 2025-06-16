@@ -2,36 +2,43 @@
 import type { PeopleEntry } from "@/types";
 import { plainify } from "@lib/textConverter";
 import { Image } from "astro:assets";
+import defaultImage from "@/assets/people/example.png";
 
 interface Props {
   entry: PeopleEntry;
 }
 
 const { entry }: Props = Astro.props;
-const { title, image, imageAlt, personalLink} = entry.data;
+const { title, imageAlt, personalLink, startYear, endYear, pronouns} = entry.data;
+const image = entry.data.image ?? defaultImage;
 
 const bodyBrief = entry.body ? plainify(entry.body?.slice(0, 100)) : null;
 ---
 
-<div class="mb-14 md:col-2 lg:col-2">
+<div class="w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 mb-10">
   <div
-    class="p-4 text-center intersect:animate-fadeUp opacity-0"
+    class="p-1 text-center intersect:animate-fadeUp opacity-0"
   >
     {
       image && (
-        <Image
-          class="mx-auto mb-4"
-          src={image}
-          alt={imageAlt}
-          width={150}
-          height={200}
-          loading="eager"
-        />
+        <div class="w-[6.25rem] h-[8.75rem] overflow-hidden md:w-[10rem] md:h-[13.125rem] mx-auto">
+          <Image
+            src={image}
+            alt={imageAlt}
+            width={300}
+            height={400}
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
+        </div>
       )
     }
-    <h4 class="mb-3">
+    <h4 class="mb-0">
       <a href={personalLink} target="_blank" rel="noopener noreferrer">{title}</a>
     </h4>
+    <p class="mb-3 text-sm text-gray-500">({pronouns})</p>
+    <h5>{startYear}-{endYear}</h5>
     {bodyBrief && <p class="mb-1">{bodyBrief}</p>}
   </div>
 </div>
+

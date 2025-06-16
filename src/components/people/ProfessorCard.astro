@@ -1,0 +1,53 @@
+---
+import type { PeopleEntry } from "@/types";
+import { plainify } from "@lib/textConverter";
+import { Image } from "astro:assets";
+
+interface Props {
+  entry: PeopleEntry;
+}
+
+const { entry }: Props = Astro.props;
+const { title, image, imageAlt, personalLink, pronouns } = entry.data;
+
+const bodyBrief = entry.body ? plainify(entry.body) : null;
+---
+
+<div class="mb-14 sm:col-4 md:col-6 lg:col-8 ml-[6rem] mr-[6rem]">
+  <div class="flex flex-col lg:flex-row gap-6 items-center lg:items-start text-center lg:text-left intersect:animate-fadeUp opacity-0">
+    
+    {image && (
+      <div class="w-[180px] h-[220px] shrink-0 overflow-hidden">
+        <Image
+          src={image}
+          alt={imageAlt}
+          width={300}
+          height={400}
+          class="w-full h-full object-cover"
+          loading="eager"
+        />
+      </div>
+    )}
+
+    <div class="flex-1">
+      <p class="mb-1 text-lg">
+        <a
+          href={personalLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-semibold text-2xl block"
+        >
+          {title}
+        </a>
+        {pronouns && (
+          <span class="text-sm text-gray-500 block mb-2">({pronouns})</span>
+        )}
+        {bodyBrief && (
+          <span class="block">{bodyBrief}</span>
+        )}
+      </p>
+    </div>
+
+  </div>
+</div>
+

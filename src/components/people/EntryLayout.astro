@@ -27,11 +27,9 @@ const { Content } = await render(entry);
           {
             image && (
               <Image
-                class="mx-auto mb-10"
+                class="mx-auto mb-10 object-cover w-full h-200"
                 src={image}
                 alt={imageAlt}
-                height={200}
-                width={150}
                 loading="eager"
               />
             )

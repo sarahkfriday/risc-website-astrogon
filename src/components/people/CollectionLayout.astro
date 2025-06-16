@@ -1,8 +1,8 @@
 ---
 import type { PeopleEntry } from "@/types";
 import BaseLayout from "@components/base/BaseLayout.astro";
-import PageHeader from "@components/common/PageHeader.astro";
-import PeopleCard from "@components/people/Card.astro";
+import StudentCard from "@components/people/Card.astro";
+import ProfessorCard from "@components/people/ProfessorCard.astro";
 
 interface Props {
   peopleIndex: PeopleEntry;
@@ -10,15 +10,99 @@ interface Props {
 }
 
 const { peopleIndex, entries } = Astro.props;
+
+// Helper to filter and sort by startYear ascending
+const groupAndSortByStartYear = (folderName: string) => {
+  return entries
+    .filter((entry) => {
+      if (!entry.id.startsWith(`${folderName}/`)) return false;
+      if (!folderName.includes("alumni") && entry.id.includes("/alumni/")) return false;
+      return true;
+    })
+    .sort((a, b) => {
+      const aYear = parseInt(a.data.startYear) || 0;
+      const bYear = parseInt(b.data.startYear) || 0;
+      return aYear - bYear;
+    });
+};
+
+const getProfessors = () => entries.filter((entry) => entry.id.startsWith(`professors/`));
+
+const professors = getProfessors();
+
+const groups = [
+  {
+    title: "PhD Students",
+    folder: "phd",
+    alumniFolder: "phd/alumni",
+  },
+  {
+    title: "Masters Students",
+    folder: "masters",
+    alumniFolder: "masters/alumni",
+  },
+  {
+    title: "Undergraduates",
+    folder: "undergraduates",
+    alumniFolder: "undergraduates/alumni",
+  },
+];
+
+// Precompute all entries to avoid recomputation in the loop
+const groupData = groups.map(({ folder, alumniFolder }) => ({
+  students: groupAndSortByStartYear(folder),
+  alumni: groupAndSortByStartYear(alumniFolder),
+}));
 ---
 
 <BaseLayout title={peopleIndex.data.title} description={peopleIndex.data.description}>
-  <PageHeader title={peopleIndex.data.title} />
   <section class="section-sm pb-0">
     <div class="container">
+
+      <h2
+        class="text-2xl
+        text-center md:text-left
+        font-semibold mb-8 ml-[6rem] 
+        mr-[6rem] border-b border-border 
+        dark:border-darkmode-border">
+        Professors
+      </h2>
       <div class="row justify-center">
-        {entries.map((entry) => <PeopleCard entry={entry} />)}
+        {professors.map((entry) => <ProfessorCard entry={entry} />)}
       </div>
+
+      {groups.map(({ title }, i) => (
+        <>
+          <h2
+            class="text-2xl
+            text-center md:text-left
+            font-semibold mb-8 ml-[1rem] mr-[1rem] 
+            md:ml-[6rem] md:mr-[6rem]
+            border-b border-border dark:border-darkmode-border">
+            {title}
+          </h2>
+          <div class="row justify-center md:ml-[6rem] md:mr-[6rem]">
+            {groupData[i].students.map((entry) => <StudentCard entry={entry} />)}
+          </div>
+
+          {groupData[i].alumni.length > 0 && (
+            <>
+              <h2
+                class="text-xl
+                text-center md:text-left
+                font-semibold mt-10 mb-8 ml-[3rem] mr-[3rem]
+                md:ml-[8rem] md:mr-[8rem]
+                border-b border-border dark:border-darkmode-border">
+                Alumni
+              </h2>
+              <div class="row justify-center md:ml-[6rem] md:mr-[6rem]">
+                {groupData[i].alumni.map((entry) => <StudentCard entry={entry} />)}
+              </div>
+            </>
+          )}
+        </>
+      ))}
+
     </div>
   </section>
 </BaseLayout>
