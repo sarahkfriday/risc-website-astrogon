@@ -1,15 +1,15 @@
 ---
-import type { PeopleEntry } from "@/types";
+import type { AwardEntry } from "@/types";
 import { plainify } from "@lib/textConverter";
 import { Image } from "astro:assets";
 import defaultImage from "@/assets/people/example.png";
 
 interface Props {
-  entry: PeopleEntry;
+  entry: AwardEntry;
 }
 
 const { entry }: Props = Astro.props;
-const { title, imageAlt, personalLink, startYear, endYear, pronouns} = entry.data;
+const {title, imageAlt, awardLink, year, recipient} = entry.data;
 const image = entry.data.image ?? defaultImage;
 
 const bodyBrief = entry.body ? plainify(entry.body?.slice(0, 100)) : null;
@@ -34,10 +34,9 @@ const bodyBrief = entry.body ? plainify(entry.body?.slice(0, 100)) : null;
       )
     }
     <h4 class="mb-0 font-primary">
-      <a href={personalLink} target="_blank" rel="noopener noreferrer">{title}</a>
+      <a href={awardLink} target="_blank" rel="noopener noreferrer">{title}</a>
     </h4>
-    <p class="mb-3 text-sm text-gray-500">({pronouns})</p>
-    <h5 class="font-secondary">{startYear}-{endYear}</h5>
+    <h5 class="font-secondary">{year}</h5>
     {bodyBrief && <p class="mb-1">{bodyBrief}</p>}
   </div>
 </div>

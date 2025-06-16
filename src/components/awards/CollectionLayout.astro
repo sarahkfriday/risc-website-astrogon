@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+import AwardCard from "./Card.astro";
+
+const awards = (await getCollection("awards")).sort(
+  (a, b) => b.data.year - a.data.year
+);
+---
+
+<section class="py-12">
+  <h2 class="text-3xl font-bold mb-8">Awards</h2>
+  <div class="flex mx-auto sm:cols-2 lg:cols-3">
+    {awards.map((award) => (
+      <AwardCard entry={award} />
+    ))}
+  </div>
+</section>

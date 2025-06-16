@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "@components/base/BaseLayout.astro";
 import BannerCarousel from "@components/base/BannerCarousel.astro";
+import AwardsCollection from "@/components/awards/CollectionLayout.astro";
+
 import type { HomeEntry } from "@/types";
 import { Image } from "astro:assets";
 import RRisc from '../../assets/logos/R-risc.png';
@@ -35,6 +37,11 @@ const { image, imageAlt, title, content, button } = entry.data;
         <h1 class="word-middle">imaging</h1>
         <h1 class="word-right">science</h1>
       </div>
+  </section>
+  <section>
+    <div class="row flex mt-[3rem] px-[6rem]">
+      <AwardsCollection/>
+    </div>
   </section>
 </BaseLayout>
 

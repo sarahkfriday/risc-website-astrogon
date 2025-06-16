@@ -29,7 +29,7 @@ const menu = [
 
 <header
   transition:persist
-  class={`container py-2 z-30 mb-6 lg:mt-8 ${stickyHeader && "sticky top-0"}`}
+  class={`bg-bg-p dark:bg-darkmode-bg-p container py-2 z-30 mb-6 lg:mt-8 ${stickyHeader && "sticky top-0"}` }
 >
   <nav class="relative flex flex-wrap items-center justify-between">
     <!-- navbar toggler -->
@@ -59,7 +59,7 @@ const menu = [
           <li class="">
             <a
               href={item.url}
-              class={`block p-2 font-secondary font-semibold text-txt-p transition dark:text-darkmode-txt-p lg:px-2 lg:py-3 ${
+              class={`block p-2 font-primary font-semibold text-txt-p transition dark:text-darkmode-txt-p lg:px-2 lg:py-3 ${
                 (pathname === `${item.url}/` || pathname === item.url) &&
                 "active"
               }`}

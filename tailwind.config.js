@@ -12,7 +12,7 @@ let h1 = h2 * font_scale;
 
 let fontPrimary = "chakra petch";
 let fontPrimaryType = "sans-serif";
-let fontSecondary = "chakra petch";
+let fontSecondary = "montserrat";
 let fontSecondaryType = "sans-serif";
 
 fontPrimary = fontPrimary

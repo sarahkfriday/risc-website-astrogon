@@ -1,6 +1,6 @@
 .glass {
-  @apply bg-bg-s dark:bg-darkmode-bg-s;
-  @apply backdrop-blur-lg;
+  @apply bg-bg-p dark:bg-darkmode-bg-p;
+  @apply backdrop-blur-sm;
   @apply bg-clip-padding backdrop-filter backdrop-saturate-100 backdrop-contrast-100;
   @apply bg-opacity-30 dark:bg-opacity-30;
   @apply border border-[rgba(255,255,255,0.6)] dark:border-[rgba(255,255,255,0.15)];

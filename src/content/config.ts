@@ -53,6 +53,22 @@ const people = defineCollection({
     }),
 });
 
+const awards = defineCollection({
+  loader: glob({
+    pattern: "**\/[^_]*.{md,mdx}",
+    base: "./src/content/awards",
+  }),
+  schema: ({ image }) =>
+    searchable.extend({
+      image: image().optional(),
+      imageAlt: z.string().default(""),
+      year: z.number().default(0),
+      title: z.string().default(""),
+      awardLink: z.string().url().optional(),
+      recipient: z.string().default(""),
+    }),
+});
+
 const blog = defineCollection({
   loader: glob({ pattern: "**\/[^_]*.{md,mdx}", base: "./src/content/blog" }),
   schema: ({ image }) =>
@@ -172,6 +188,7 @@ const terms = defineCollection({
 export const collections = {
   about,
   people,
+  awards,
   blog,
   docs,
   home,
