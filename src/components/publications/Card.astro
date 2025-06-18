@@ -1,90 +1,73 @@
 ---
-import type { BlogEntry } from "@/types";
-import { upperHumanize, plainify, slugify } from "@lib/textConverter";
-import {
-  FaRegFolder,
-  FaRegClock,
-  FaHashtag,
-  FaRegCalendarAlt,
-} from "react-icons/fa";
-import readingTime from "@lib/readingTime";
+import type { PubEntry } from "@/types";
+import { plainify } from "@lib/textConverter";
 import { formatDate } from "@lib/formatDate";
+import { Image } from "astro:assets";
 
 interface Props {
-  entry: BlogEntry;
+  entry: PubEntry;
 }
 
 const { entry }: Props = Astro.props;
 const {
   title,
-  description,
-  autodescription,
-  date,
-  categories,
-  tags,
-  complexity,
+  authors,
+  projectPage,
+  projectCode,
+  projectPdf,
+  image,
+  imageAlt
 } = entry.data;
 
-const descriptionLength = 200;
-
-const entryDate = date ? formatDate(date) : null;
-const entryReadingTime = readingTime(entry.body!, complexity);
-const entryDescription =
-  description ||
-  (autodescription ? plainify(entry.body!.slice(0, descriptionLength)) : null);
+const entryDate = entry.data.date ? formatDate(entry.data.date) : null;
+const publicationVenue = entry.body ? plainify(entry.body) : null;
 ---
 
-<div class="h-full m-2 pl-0 bg-gradient-to-br gradient rounded-lg">
-  <div class="glass h-full rounded-lg p-4 intersect:animate-fadeUp opacity-0">
-    <h4 class="mb-2">
-      <a href={`/blog/${entry.id}`}>
-        {title}
-      </a>
-    </h4>
-    <ul class="mb-2">
-      {
-        categories && (
-          <li class="mr-0 inline-block">
-            {categories.map((category: string, index: number) => (
-              <a href={`/blog/categories/${slugify(category)}`}>
-                <FaRegFolder className={"ml-2 -mt-1 inline-block"} />
-                {upperHumanize(category)}
-              </a>
-            ))}
-          </li>
-        )
-      }
-      <!-- { tags && (
-        <li class="mr-0 inline-block">
-          {
-            tags.map((tag: string, index: number) => (
-              <a href={`/blog/tags/${slugify(tag)}`}>
-                <FaHashtag className={"ml-2 -mt-1 inline-block"} />
-                {lowerHumanize(tag)}
-              </a>
-            ))
-          }
-        </li>
-      )} -->
-      {
-        entryDate && (
-          <li class="mr-0 inline-block">
-            <FaRegCalendarAlt className={"ml-2 -mt-1 inline-block"} />
-            {entryDate}
-          </li>
-        )
-      }
-      {
-        complexity > 0 && (
-          <li class="mr-0 inline-block">
-            <FaRegClock className={"ml-2 -mt-1 inline-block"} />
-            {entryReadingTime}
-          </li>
-        )
-      }
-    </ul>
-    <p class="">
-      {entryDescription}
-    </p>
+<article class="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 items-start">
+  {image && (
+    <Image
+      src={image}
+      alt={imageAlt}
+      class="w-32 h-auto object-cover rounded-lg shadow-md"
+      loading="lazy"
+    />
+  )}
+
+  <div class="flex flex-col gap-2">
+    <h4 class="text-lg font-bold">{title}</h4>
+
+    {publicationVenue && (
+      <p class="text-sm text-gray-500">{publicationVenue}</p>
+    )}
+
+    {authors && (
+      <p class="text-sm text-gray-700">
+        {authors.map((author, index) => {
+          const name =
+            typeof author.name === "string"
+              ? author.name
+              : "Unknown";
+          const annotation = author.annotation ? ` (${author.annotation})` : "";
+          return (
+            <>
+              {name}{annotation}
+              {index < authors.length - 1 && ", "}
+            </>
+          );
+        })}
+      </p>
+    )}
+
+    <div class="flex gap-4 text-sm text-blue-600 underline">
+      {projectPage && (
+        <a href={projectPage} target="_blank" rel="noopener noreferrer">Project Page</a>
+      )}
+      {projectCode && (
+        <a href={projectCode} target="_blank" rel="noopener noreferrer">Code</a>
+      )}
+      {projectPdf && (
+        <a href={projectPdf} target="_blank" rel="noopener noreferrer">PDF</a>
+      )}
+    </div>
   </div>
-</div>
+</article>

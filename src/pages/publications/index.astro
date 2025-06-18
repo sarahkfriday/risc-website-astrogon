@@ -1,0 +1,12 @@
+---
+import type { PubEntry } from "@/types";
+import CollectionLayout from "@components/publications/CollectionLayout.astro";
+import { getEntries } from "@lib/contentParser";
+import { getIndex } from "@lib/contentParser";
+import { sortByTitle } from "@lib/sortFunctions";
+
+const pubIndex = await getIndex("publications") as PubEntry;
+const entries = await getEntries("publications", sortByTitle) as PubEntry[];
+---
+
+<CollectionLayout pubIndex={pubIndex} entries={entries} />

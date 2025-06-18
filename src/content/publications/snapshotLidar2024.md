@@ -10,8 +10,9 @@ authors:
   - name: "Yaswanth Cherivirala"
   - name: "Vishwanath Saragadam"
   - name: "@people/professors/AdithyaPediredla"
-links: 
-    projectPage: "https://sarahkfriday.github.io/snapshot-lidar/"
-    projectCode: "https://github.com/dartmouth-risc-lab/snapshot-lidar"
-    pdf: "https://sarahkfriday.github.io/snapshot-lidar/static/pdfs/Snapshot_Lidar_Errata.pdf"
+projectPage: "https://sarahkfriday.github.io/snapshot-lidar/"
+projectCode: "https://github.com/dartmouth-risc-lab/snapshot-lidar"
+projectPdf: "https://sarahkfriday.github.io/snapshot-lidar/static/pdfs/Snapshot_Lidar_Errata.pdf"
 ---
+
+Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition

@@ -1,63 +1,24 @@
 ---
 import BaseLayout from "@components/base/BaseLayout.astro";
-import BlogCard from "@components/blog/Card.astro";
-import Pagination from "@components/common/Pagination.astro";
-import PageHeader from "@components/common/PageHeader.astro";
-import BlogSidebar from "@components/blog/Sidebar.astro";
-import type { BlogEntry } from "@/types";
+import PublicationCard from "@/components/publications/Card.astro"; // path to your card component
+import { getCollection } from "astro:content";
 
-interface Props {
-  entryIndex: BlogEntry;
-  entries: BlogEntry[];
-  tags: string[];
-  categories: string[];
-  allCategories: string[];
-  pageIndex: number;
-  pageCount: number;
-}
+const publications = await getCollection("publications");
 
-const {
-  entryIndex,
-  entries,
-  tags,
-  categories,
-  allCategories,
-  pageIndex,
-  pageCount,
-} = Astro.props;
+// Optional: sort by date descending
+publications.sort((a, b) => {
+  const dateA = a.data.date ? new Date(a.data.date).getTime() : 0;
+  const dateB = b.data.date ? new Date(b.data.date).getTime() : 0;
+  return dateB - dateA;
+});
 ---
+<BaseLayout title="" description="">
 
-<BaseLayout title={entryIndex.data.title} description={entryIndex.data.description}>
-  <PageHeader title={entryIndex.data.title} />
-  <section class="section">
-    <div class="flex container">
-      <div class="row px-0 mx-0 w-full">
-        <!-- blog posts -->
-        <div class="col-12 lg:col-8 lg:p-0">
-          {
-            entries.map((entry) => (
-              <div class="mb-4">
-                <BlogCard entry={entry} />
-              </div>
-            ))
-          }
-          <Pagination
-            collection="blog"
-            pageIndex={pageIndex}
-            pageCount={pageCount}
-          />
-        </div>
-        <!-- sidebar -->
-        <div
-          class="hidden lg:col-4 lg:flex max-h-static_sidemenu sticky p-0 pl-4 top-[4rem]"
-        >
-          <BlogSidebar
-            tags={tags}
-            categories={categories}
-            allCategories={allCategories}
-          />
-        </div>
-      </div>
-    </div>
-  </section>
-</BaseLayout>
+<section class="max-w-3xl mx-auto px-4 py-12">
+
+  <div class="flex flex-col gap-8">
+    {publications.map((entry) => (
+      <PublicationCard entry={entry} />
+    ))}
+  </div>
+</section>

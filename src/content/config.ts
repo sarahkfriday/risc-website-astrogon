@@ -36,6 +36,7 @@ const people = defineCollection({
   }),
   schema: ({ image }) =>
     searchable.extend({
+      title: z.string(),
       image: image().optional(),
       imageAlt: z.string().default(""),
       startYear: z.string().default("2022"), 
@@ -92,7 +93,7 @@ const publications = defineCollection({
       categories: z.array(z.string()).optional(),
       projectPage: z.string().url().optional(),
       projectCode: z.string().url().optional(),
-      pdf: z.string().url().default("")
+      projectPdf: z.string().url().default("")
     }),
 });
 
@@ -201,6 +202,7 @@ export const collections = {
   about,
   people,
   awards,
+  publications,
   blog,
   docs,
   home,
