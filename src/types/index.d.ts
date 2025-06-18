@@ -3,29 +3,14 @@ import type { MarkdownHeading } from "astro";
 
 export type GenericEntry = CollectionEntry<CollectionKey>;
 
-export type AboutEntry = CollectionEntry<"about">;
 export type PeopleEntry = CollectionEntry<"people">;
 export type AwardEntry = CollectionEntry<"awards">;
 export type PubEntry = CollectionEntry<"publications">;
-export type BlogEntry = CollectionEntry<"blog">;
-export type DocsEntry = CollectionEntry<"docs">;
 export type HomeEntry = CollectionEntry<"home">;
-export type IndexCardsEntry = CollectionEntry<"indexCards">;
-export type PoetryEntry = CollectionEntry<"poetry">;
-export type PortfolioEntry = CollectionEntry<"portfolio">;
-export type RecipesEntry = CollectionEntry<"recipes">;
-export type TermsEntry = CollectionEntry<"terms">;
 
 export type SearchableEntry =
-  | AboutEntry
   | PeopleEntry
-  | BlogEntry
-  | PubEntry
-  | DocsEntry
-  | PoetryEntry
-  | PortfolioEntry
-  | RecipesEntry
-  | TermsEntry;
+  | PubEntry;
 
 export type SocialLinks = {
   email?: string;
