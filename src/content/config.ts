@@ -12,16 +12,12 @@ const searchable = z.object({
 });
 
 const social = z.object({
-  discord: z.string().optional(),
   email: z.string().optional(),
-  facebook: z.string().optional(),
   github: z.string().optional(),
-  instagram: z.string().optional(),
   linkedIn: z.string().optional(),
-  pinterest: z.string().optional(),
-  tiktok: z.string().optional(),
   website: z.string().optional(),
   youtube: z.string().optional(),
+  googleScholar: z.string().optional()
 });
 
 const link = z.object({
@@ -46,10 +42,10 @@ const people = defineCollection({
     searchable.extend({
       image: image().optional(),
       imageAlt: z.string().default(""),
-      personalLink: z.string().url().optional(),
       startYear: z.string().default("2022"), 
       endYear: z.string().default("present"),
-      pronouns: z.string().optional()
+      pronouns: z.string().optional(),
+      social: social.optional()
     }),
 });
 
