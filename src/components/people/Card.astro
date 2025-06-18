@@ -14,7 +14,7 @@ const { title, imageAlt, startYear, endYear, pronouns, social} = entry.data;
 const image = entry.data.image ?? defaultImage;
 
 const bodyBrief = entry.body ? plainify(entry.body?.slice(0, 100)) : null;
-const personalWebsite = social ? social.website: null;
+const personalLink = social?.website ?? Object.values(social ?? {}).find(Boolean) ?? null;
 ---
 
 <div class="w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 mb-10">
@@ -37,9 +37,9 @@ const personalWebsite = social ? social.website: null;
     }
   <div class="flex items-center justify-center gap-1">
     <h4 class="mb-0 font-primary">
-      {personalWebsite ? (
+      {personalLink ? (
         <a 
-          href={personalWebsite} 
+          href={personalLink} 
           target="_blank" 
           rel="noopener noreferrer"
           class="hover:underline"
@@ -50,9 +50,9 @@ const personalWebsite = social ? social.website: null;
         title
       )}
     </h4>
-    {personalWebsite && (
+    {personalLink && (
       <a 
-        href={personalWebsite} 
+        href={personalLink} 
         target="_blank" 
         rel="noopener noreferrer"
         class="text-gray-500 hover:text-black"

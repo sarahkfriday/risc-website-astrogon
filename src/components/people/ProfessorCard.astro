@@ -2,13 +2,14 @@
 import type { PeopleEntry } from "@/types";
 import { plainify } from "@lib/textConverter";
 import { Image } from "astro:assets";
+import Social from "@components/common/Social.astro";
 
 interface Props {
   entry: PeopleEntry;
 }
 
 const { entry }: Props = Astro.props;
-const { title, image, imageAlt, personalLink, pronouns } = entry.data;
+const { title, image, imageAlt, pronouns, social } = entry.data;
 
 const bodyBrief = entry.body ? plainify(entry.body) : null;
 ---
@@ -30,24 +31,19 @@ const bodyBrief = entry.body ? plainify(entry.body) : null;
     )}
 
     <div class="flex-1">
-      <p class="mb-1 text-lg">
-        <a
-          href={personalLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="font-semibold font-primary text-2xl block"
-        >
-          {title}
-        </a>
+      <div class="flex flex-col lg:flex-row lg:items-baseline justify-center lg:justify-start mb-1 text-lg">
+        <h4 class="m-0">{title}</h4>
         {pronouns && (
-          <span class="text-sm text-gray-500 block mb-2">({pronouns})</span>
+          <span class="text-sm text-gray-500 lg:ml-2 lg:inline block">({pronouns})</span>
         )}
-        {bodyBrief && (
-          <span class="block">{bodyBrief}</span>
-        )}
-      </p>
+      </div>
+      {bodyBrief && (
+        <p class="mb-2 text-center lg:text-left">{bodyBrief}</p>
+      )}
+      <div class="flex justify-center lg:justify-start mt-2">
+        <Social links={social} size="sm" />
+      </div>
     </div>
-
   </div>
 </div>
 

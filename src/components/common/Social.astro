@@ -12,9 +12,13 @@ import {
 
 interface Props {
   links?: SocialLinks;
+  size?: "sm" | "md" | "lg";
 }
 
-const { links } = Astro.props;
+const { links, size = "md" } = Astro.props;
+const iconSizeClass = size === "sm" ? "w-5 h-5"
+  : size === "lg" ? "w-9 h-9" // else size = lg? 
+  : "w-7 h-7"; // default md
 
 const liClass = "inline-block px-1 intersect:animate-fade opacity-0";
 const iconClass =
@@ -34,7 +38,7 @@ const iconClass =
             rel="noopener noreferrer nofollow"
           >
             <span class="sr-only">Email</span>
-            <FaEnvelope className="w-8 h-8" />
+            <FaEnvelope className={iconSizeClass} />
           </a>
         </li>
       )}
@@ -48,21 +52,7 @@ const iconClass =
             rel="noopener noreferrer nofollow"
           >
             <span class="sr-only">GitHub</span>
-            <FaGithub className="w-8 h-8" />
-          </a>
-        </li>
-      )}
-      {links.linkedIn && (
-        <li class={liClass}>
-          <a
-            class={iconClass}
-            aria-label="LinkedIn"
-            href={links.linkedIn}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-          >
-            <span class="sr-only">LinkedIn</span>
-            <FaLinkedin className="w-8 h-8" />
+            <FaGithub className={iconSizeClass} />
           </a>
         </li>
       )}
@@ -76,7 +66,7 @@ const iconClass =
             rel="noopener noreferrer nofollow"
           >
             <span class="sr-only">Website</span>
-            <FaGlobe className="w-8 h-8" />
+            <FaGlobe className={iconSizeClass} />
           </a>
         </li>
       )}
@@ -90,7 +80,7 @@ const iconClass =
             rel="noopener noreferrer nofollow"
           >
             <span class="sr-only">YouTube</span>
-            <FaYoutube className="w-9 h-9" />
+            <FaYoutube className={iconSizeClass} />
           </a>
         </li>
       )}
@@ -104,7 +94,21 @@ const iconClass =
             rel="noopener noreferrer nofollow"
           >
             <span class="sr-only">Google Scholar</span>
-            <FaGoogleScholar className="w-8 h-8" />
+            <FaGoogleScholar className={iconSizeClass} />
+          </a>
+        </li>
+      )}
+      {links.linkedIn && (
+        <li class={liClass}>
+          <a
+            class={iconClass}
+            aria-label="LinkedIn"
+            href={links.linkedIn}
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+          >
+            <span class="sr-only">LinkedIn</span>
+            <FaLinkedin className={iconSizeClass} />
           </a>
         </li>
       )}
