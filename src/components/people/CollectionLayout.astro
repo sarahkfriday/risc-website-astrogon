@@ -11,13 +11,16 @@ interface Props {
 
 const { peopleIndex, entries } = Astro.props;
 
-// Helper to filter and sort by startYear ascending
-const groupAndSortByStartYear = (folderName: string) => {
+const groupAndSortByStartYear = (folderName: string, isAlumni: boolean) => {
   return entries
     .filter((entry) => {
+      // Must be in the specified folder
       if (!entry.id.startsWith(`${folderName}/`)) return false;
-      if (!folderName.includes("alumni") && entry.id.includes("/alumni/")) return false;
-      return true;
+
+      // Determine if this is considered alumni or not
+      const isEntryAlumni = entry.data.endYear !== "present";
+
+      return isAlumni ? isEntryAlumni : !isEntryAlumni;
     })
     .sort((a, b) => {
       const aYear = parseInt(a.data.startYear) || 0;
@@ -34,24 +37,20 @@ const groups = [
   {
     title: "PhD Students",
     folder: "phd",
-    alumniFolder: "phd/alumni",
   },
   {
     title: "Masters Students",
     folder: "masters",
-    alumniFolder: "masters/alumni",
   },
   {
     title: "Undergraduates",
     folder: "undergraduates",
-    alumniFolder: "undergraduates/alumni",
   },
 ];
 
-// Precompute all entries to avoid recomputation in the loop
-const groupData = groups.map(({ folder, alumniFolder }) => ({
-  students: groupAndSortByStartYear(folder),
-  alumni: groupAndSortByStartYear(alumniFolder),
+const groupData = groups.map(({ folder }) => ({
+  students: groupAndSortByStartYear(folder, false), // current students
+  alumni: groupAndSortByStartYear(folder, true),    // alumni (have endYear)
 }));
 ---
 

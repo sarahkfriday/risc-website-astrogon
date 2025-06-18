@@ -20,10 +20,6 @@ const social = z.object({
   googleScholar: z.string().optional()
 });
 
-const link = z.object({
-  link: z.string().optional()
-})
-
 const about = defineCollection({
   loader: glob({ pattern: "-index.{md,mdx}", base: "./src/content/about" }),
   schema: ({ image }) =>
@@ -77,6 +73,26 @@ const blog = defineCollection({
       tags: z.array(z.string()).optional(),
       complexity: z.number().default(1),
       hideToc: z.boolean().default(false),
+    }),
+});
+
+const publications = defineCollection({
+  loader: glob({ pattern: "**\/[^_]*.{md,mdx}", base: "./src/content/publications" }),
+  schema: ({ image }) =>
+    searchable.extend({
+      date: z.date().optional(),
+      image: image().optional(),
+      imageAlt: z.string().default(""),
+      authors: z.array(
+        z.object({
+          name: z.union([z.string(), reference("people")]),
+          annotation: z.string().optional(),
+        })
+      ).optional(),
+      categories: z.array(z.string()).optional(),
+      projectPage: z.string().url().optional(),
+      projectCode: z.string().url().optional(),
+      pdf: z.string().url().default("")
     }),
 });
 
