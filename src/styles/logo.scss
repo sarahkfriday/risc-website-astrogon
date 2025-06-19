@@ -38,9 +38,9 @@
 }
 
 .image-container-top {
-    grid-column: 22 / 33;
     grid-row: 1;
     z-index: 2;
+    grid-column: 22 / 33;
     @media (min-width: theme('screens.md')) {
         grid-column: 16 / 21;
     }
@@ -51,9 +51,9 @@
 }
 
 .image-container-middle {
-    grid-column: 13 / 24;
     grid-row: 1;
     z-index: 1;
+    grid-column: 13 / 24;
     @media (min-width: theme('screens.md')) {
         grid-column: 12 / 17;
     }
@@ -64,10 +64,9 @@
 }
 
 .image-container-bottom {
-    grid-column: 4 / 15;
     grid-row: 1;
     z-index: 0;
-
+    grid-column: 4 / 15;
     @media (min-width: theme('screens.md')) {
         grid-column: 8 / 13;
     }
@@ -99,46 +98,37 @@
     }
 }
 
-.word-container{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    position: relative;
-    top: 3.25rem;
-    max-width: 43.75rem;   /* maximum width */
-    width: 100%;         /* allow shrinking */
-    margin: 0 auto;
-    padding: 0 1rem;     /* optional horizontal padding */
+.word-container {
+    @apply flex justify-between relative top-[3.25rem] w-full  max-w-[19rem] md:max-w-[28rem] lg:max-w-[30rem] xl:max-w-[43.75rem] mx-auto px-4;
 }
 
 .word-left,
 .word-middle,
 .word-right {
+    @apply opacity-0;
+    @apply text-xl sm:text-2xl md:text-3xl xl:text-5xl; // scalable by breakpoint
     font-family: Chakra Petch;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
     transform: translateY(1rem);
     transition: opacity 0.8s ease, transform 1.0s ease;
 }
 
 .word-left {
-    grid-column: 1;
-    grid-row: 1;
+    @apply flex justify-start flex-initial;
     color: #cc1212;
     transition: transform 0.3s ease;
 }
 
 .word-middle {
-    grid-column: 2;
-    grid-row: 1;
+    @apply flex justify-center flex-auto;
     color: #23cc67;
     transition: transform 0.3s ease;
 }
 
 .word-right {
-    grid-column: 3;
-    grid-row: 1;
+    @apply flex justify-start flex-auto;
     color: #3890f9;
     transition: transform 0.3s ease;
 }
