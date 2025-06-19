@@ -1,5 +1,5 @@
 ---
-title: "Snapshot Lidar: Fourier Embedding of Amplitude and Phase for Single-Image Depth Reconstruction"
+title: "Megahertz Light Steering without Moving Parts"
 date: 2023-06-01
 image: "@assets/publications/teasers/mega-light-sterring.png"
 authors:
