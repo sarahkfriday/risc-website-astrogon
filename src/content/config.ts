@@ -60,13 +60,10 @@ const publications = defineCollection({
       date: z.date().optional(),
       image: image().optional(),
       imageAlt: z.string().default(""),
-      authors: z.array(
-        z.object({
-          name: z.union([z.string(), reference("people")]),
-          annotation: z.string().optional(),
-        })
-      ).optional(),
-      categories: z.array(z.string()).optional(),
+      authors: z.array(z.object({
+        name: z.string(),
+        affiliation: z.string().optional().default(""),
+      })).optional(),
       projectPage: z.string().url().optional(),
       projectCode: z.string().url().optional(),
       projectPdf: z.string().url().default("")

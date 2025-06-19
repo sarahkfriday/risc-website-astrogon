@@ -3,6 +3,9 @@ import type { PubEntry } from "@/types";
 import { plainify } from "@lib/textConverter";
 import { formatDate } from "@lib/formatDate";
 import { Image } from "astro:assets";
+import { FaGlobe } from "react-icons/fa6";
+import { FaCode } from "react-icons/fa6";
+import { FaRegFilePdf } from "react-icons/fa";
 
 interface Props {
   entry: PubEntry;
@@ -21,6 +24,7 @@ const {
 
 const entryDate = entry.data.date ? formatDate(entry.data.date) : null;
 const publicationVenue = entry.body ? plainify(entry.body) : null;
+
 ---
 
 <article class="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 items-start">
@@ -40,33 +44,34 @@ const publicationVenue = entry.body ? plainify(entry.body) : null;
       <p class="text-sm text-gray-500">{publicationVenue}</p>
     )}
 
-    {authors && (
-      <p class="text-sm text-gray-700">
-        {authors.map((author, index) => {
-          const name =
-            typeof author.name === "string"
-              ? author.name
-              : "Unknown";
-          const annotation = author.annotation ? ` (${author.annotation})` : "";
-          return (
-            <>
-              {name}{annotation}
-              {index < authors.length - 1 && ", "}
-            </>
-          );
-        })}
-      </p>
-    )}
+  {authors && (
+    <p class="text-sm text-gray-700">
+      {authors.map((author, index) => (
+        <Fragment key={index}>
+          {author.affiliation
+            ? author.name
+            : <b>{author.name}</b>}
+          {index < authors.length - 1 && ", "}
+        </Fragment>
+      ))}
+    </p>
+  )}
 
-    <div class="flex gap-4 text-sm text-blue-600 underline">
+    <div class="flex gap-4 text-sm text-blue-600 underline items-center">
       {projectPage && (
-        <a href={projectPage} target="_blank" rel="noopener noreferrer">Project Page</a>
+        <a href={projectPage} target="_blank" rel="noopener noreferrer" class="flex items-center gap-1">
+          <FaGlobe/>Project Page
+        </a>
       )}
       {projectCode && (
-        <a href={projectCode} target="_blank" rel="noopener noreferrer">Code</a>
+        <a href={projectCode} target="_blank" rel="noopener noreferrer" class="flex items-center gap-1">
+          <FaCode /> Code
+        </a>
       )}
       {projectPdf && (
-        <a href={projectPdf} target="_blank" rel="noopener noreferrer">PDF</a>
+        <a href={projectPdf} target="_blank" rel="noopener noreferrer" class="flex items-center gap-1">
+          <FaRegFilePdf /> PDF
+        </a>
       )}
     </div>
   </div>
