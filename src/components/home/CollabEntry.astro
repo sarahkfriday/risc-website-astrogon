@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+
+// Load all funding logo images eagerly and statically
+const logoImports = import.meta.glob('../../assets/logos/collaborators/*.{png,jpg,jpeg,svg,webp}', {
+  eager: true,
+  import: 'default'
+});
+
+const logos = Object.values(logoImports);
+---
+
+<section class="py-12 px-4 text-center">
+  <h2 class="text-2xl font-semibold mb-8">
+    We have happily collaborated with
+  </h2>
+
+  <div class="flex flex-wrap justify-center gap-6 items-center">
+    {logos.map((img, index) => (
+      <Image
+        key={index}
+        src={img}
+        alt={`Funding logo ${index + 1}`}
+        class="h-16 w-auto object-contain"
+        loading="lazy"
+      />
+    ))}
+  </div>
+</section>
