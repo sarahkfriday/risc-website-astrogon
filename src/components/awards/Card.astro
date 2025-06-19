@@ -20,9 +20,7 @@ const bodyBrief = entry.body ? plainify(entry.body?.slice(0, 100)) : null;
 
 <div class="w-full border-l rounded-bl-[3rem] border-b border-gray-200 dark:border-gray-600">
   <div class="flex h-full justify-between items-center intersect:animate-fadeUp opacity-0">
-    <!-- Left: Image + Recipient + Body -->
     <div class="flex items-center gap-4 ml-2">
-      <!-- Trophy + Image -->
       {image && (
         <div class="relative flex flex-col min-w-[3.5rem]">
           <FaTrophy className="w-[2rem] h-[2rem] mb-6 text-yellow-300 dark:text-yellow-200" />
@@ -39,17 +37,27 @@ const bodyBrief = entry.body ? plainify(entry.body?.slice(0, 100)) : null;
         </div>
       )}
 
-      <!-- Text: Recipient + Title + Body -->
       <div class="flex flex-col justify-center h-full">
-        {bodyBrief && <h5 class="mb-1">{bodyBrief}</h5>}
-        <h6 class="font-primary">
-          <a href={awardLink} target="_blank" rel="noopener noreferrer">{title}</a>
-        </h6>
+        {bodyBrief ? (
+          awardLink ? (
+            <a
+              href={awardLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mb-1 hover:underline"
+            >
+              <h5>{bodyBrief}</h5>
+            </a>
+          ) : (
+            <h5 class="mb-1">{bodyBrief}</h5>
+          )
+        ) : null}
+
+        <h6 class="font-primary">{title}</h6>
         <h6>{recipient}</h6>
       </div>
     </div>
 
-    <!-- Right: Year -->
     <div class="ml-auto mr-2">
       <h6 class="font-secondary whitespace-nowrap">{year}</h6>
     </div>

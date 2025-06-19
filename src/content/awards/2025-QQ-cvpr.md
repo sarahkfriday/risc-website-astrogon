@@ -2,7 +2,7 @@
 image: "@assets/people/QQ.jpg"
 year: 2025
 title: "CVPR Poster"
-awardLink: https://necv2023.github.io/
+awardLink: https://dartmouth-risc-lab.github.io/event-field-website/
 recipient: "Quinton Qu"
 ---
 Highlight

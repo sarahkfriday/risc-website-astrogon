@@ -5,14 +5,8 @@ import { getEntriesBatch } from "@lib/contentParser";
 import type { CollectionKey } from "astro:content";
 
 const searchableCollections = [
-  "about",
-  "people",
-  "blog",
-  "docs",
-  "poetry",
-  "portfolio",
-  "recipes",
-  "terms",
+  "publications"
+
 ] as CollectionKey[];
 
 const searchList = (await getEntriesBatch(

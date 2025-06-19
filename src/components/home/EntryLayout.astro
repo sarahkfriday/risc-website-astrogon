@@ -3,7 +3,8 @@ import BaseLayout from "@components/base/BaseLayout.astro";
 import BannerCarousel from "@components/base/BannerCarousel.astro";
 import AwardsCollection from "@/components/awards/CollectionLayout.astro";
 import FundingEntry from "@/components/home/FundingEntry.astro"; 
-import CollabEntry from "@/components/home/CollabEntry.astro"; 
+// import CollabEntry from "@/components/home/CollabEntry.astro"; 
+import NewsCollection from "@/components/news/CardCollection.astro";
 
 import type { HomeEntry } from "@/types";
 import { Image } from "astro:assets";
@@ -43,6 +44,11 @@ const { image, imageAlt, title, content, button } = entry.data;
   <section>
     <div class="row flex mt-[3rem] px-[1rem] md:px-[3rem] lg:px-[6rem]">
       <AwardsCollection/>
+    </div>
+  </section>
+  <section>
+    <div class="row flex mt-[3rem] px-[1rem] md:px-[3rem] lg:px-[6rem]">
+      <NewsCollection/>
     </div>
   </section>
   <!-- <section>

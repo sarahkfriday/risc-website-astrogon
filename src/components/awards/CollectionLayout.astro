@@ -8,8 +8,8 @@ const awards = (await getCollection("awards")).sort(
 ---
 
 <section class="py-12">
-    <h2 class="text-3xl font-bold mb-8 text-center">Awards</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
+    <h1 class="text-3xl font-bold mb-8 md:mb-[4rem] text-center md:text-left border-b border-border dark:border-darkmode-border">Awards</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
       {awards.map((award) => (
         <AwardCard entry={award} />
       ))}

@@ -1,0 +1,48 @@
+---
+import NewsCard from "@/components/news/Card.astro";
+import { getCollection } from "astro:content";
+
+const newsArticle = await getCollection("news");
+
+// Group by year
+const groupedNewsArticle: Record<string, typeof newsArticle> = {};
+
+for (const pub of newsArticle) {
+  const rawDate = pub.data.date;
+  if (!rawDate) continue;
+
+  const pubDate = new Date(rawDate);
+  const year = pubDate.getFullYear().toString();
+
+  if (!groupedNewsArticle[year]) {
+    groupedNewsArticle[year] = [];
+  }
+  groupedNewsArticle[year].push(pub);
+}
+
+// Sort each year's newsArticle by month (descending)
+for (const year in groupedNewsArticle) {
+  groupedNewsArticle[year].sort((a, b) => {
+    const dateA = new Date(a.data.date).getTime();
+    const dateB = new Date(b.data.date).getTime();
+    return dateB - dateA; // Descending by full date
+  });
+}
+
+// Sort years descending
+const sortedYears = Object.keys(groupedNewsArticle).sort((a, b) => Number(b) - Number(a));
+---
+
+<section class="w-full mx-auto">
+    <h1 class="text-3xl font-bold mb-8 md:mb-[4rem] text-center md:text-left border-b border-border dark:border-darkmode-border">News</h1>
+    {sortedYears.map((year) => (
+    <div class="mb-12" key={year}>
+        <div class="flex flex-col gap-8">
+        {groupedNewsArticle[year].map((entry) => (
+            <NewsCard entry={entry} />
+        ))}
+        </div>
+    </div>
+    ))}
+</section>
+

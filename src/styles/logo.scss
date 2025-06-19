@@ -117,19 +117,19 @@
 
 .word-left {
     @apply flex justify-start flex-initial;
-    color: #cc1212;
+    color: #cc1212 !important;
     transition: transform 0.3s ease;
 }
 
 .word-middle {
     @apply flex justify-center flex-auto;
-    color: #23cc67;
+    color: #23cc67 !important;
     transition: transform 0.3s ease;
 }
 
 .word-right {
     @apply flex justify-start flex-auto;
-    color: #3890f9;
+    color: #3890f9 !important;
     transition: transform 0.3s ease;
 }
 

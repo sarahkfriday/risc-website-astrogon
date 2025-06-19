@@ -14,6 +14,7 @@ authors:
 projectPage: "https://dartmouth-risc-lab.github.io/event-field-website/"
 projectCode: "https://github.com/QuintonQu/Event-Field"
 projectPdf: "https://dartmouth-risc-lab.github.io/event-field-website/static/pdfs/event_field.pdf"
+award: Highlight
 ---
 
 CVPR 2025 (Highlight)

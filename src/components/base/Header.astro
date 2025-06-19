@@ -25,7 +25,7 @@ const menu = [
 
 <header
   transition:persist
-  class={`bg-bg-p dark:bg-darkmode-bg-p container py-2 z-30 mb-6 lg:mt-8 ${stickyHeader && "sticky top-0"}` }
+  class={`bg-bg-p dark:bg-darkmode-bg-p container py-2 z-30 mb-3 md:mb-6 lg:mt-8 ${stickyHeader && "sticky top-0"}` }
 >
   <nav class="relative flex flex-wrap items-center justify-between">
     <!-- navbar toggler -->
@@ -48,14 +48,14 @@ const menu = [
     <!-- /navbar toggler -->
     <ul
       id="nav-menu"
-      class="text-center order-2 hidden w-full pb-6 md:order-2 md:flex md:w-auto md:space-x-2 md:pb-0 lg:space-x-4"
+      class="text-center justify-center order-1 hidden w-full pb-6 md:order-2 md:flex md:w-auto md:space-x-2 md:pb-0 lg:space-x-4"
     >
       {
         menu.map((item) => (
           <li class="">
             <a
               href={item.url}
-              class={`block p-2 font-primary font-semibold text-txt-p transition dark:text-darkmode-txt-p lg:px-2 lg:py-3 ${
+              class={`block p-2 text-lg font-primary font-semibold text-txt-p transition dark:text-darkmode-txt-p lg:px-2 lg:py-3 ${
                 (pathname === `${item.url}/` || pathname === item.url) &&
                 "active"
               }`}
@@ -66,7 +66,7 @@ const menu = [
         ))
       }
     </ul>
-    <div class="text-center order-1 lg:my-0 flex items-center justify-center lg:justify-end">
+    <div class="text-center order-2 md:order-1 lg:my-0 flex items-center justify-center ">
       <Social
         links={{
           youtube: "https://youtube.com/@risc-lab-dartmouth?si=p3y_LFPQIwpu5-9W",
@@ -75,7 +75,7 @@ const menu = [
         }}
       />
     </div>
-    <div class="order-3 ml-auto flex items-center md:order-3 lg:ml-0">
+    <div class="order-3 flex items-center md:order-3 lg:ml-0">
       <a
         class="mr-4 inline-block border-border text-xl text-txt-p dark:border-darkmode-border dark:text-darkmode-txt-p"
         href="/search"

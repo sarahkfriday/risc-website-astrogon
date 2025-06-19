@@ -2,7 +2,7 @@
 image: "@assets/people/QQ.jpg"
 year: 2024
 title: "ICCP Photography Competition"
-awardLink: https://necv2023.github.io/
+awardLink: https://iccp2024.iccp-conference.org/awards/
 recipient: "Quinton Qu"
 ---
 1st Place

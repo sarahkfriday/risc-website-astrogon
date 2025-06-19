@@ -53,6 +53,21 @@ const awards = defineCollection({
     }),
 });
 
+const news = defineCollection({
+  loader: glob({
+    pattern: "**\/[^_]*.{md,mdx}",
+    base: "./src/content/news",
+  }),
+  schema: ({ image }) =>
+    searchable.extend({
+      image: image().optional(),
+      imageAlt: z.string().default(""),
+      title: z.string().default(""),
+      link: z.string().url().optional(),
+      date: z.date()
+    }),
+});
+
 const publications = defineCollection({
   loader: glob({ pattern: "**\/[^_]*.{md,mdx}", base: "./src/content/publications" }),
   schema: ({ image }) =>
@@ -66,7 +81,8 @@ const publications = defineCollection({
       })).optional(),
       projectPage: z.string().url().optional(),
       projectCode: z.string().url().optional(),
-      projectPdf: z.string().url().default("")
+      projectPdf: z.string().url().default(""),
+      award: z.string().optional()
     }),
 });
 
@@ -93,4 +109,5 @@ export const collections = {
   awards,
   publications,
   home,
+  news
 };

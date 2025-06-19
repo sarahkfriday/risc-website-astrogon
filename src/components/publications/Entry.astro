@@ -1,0 +1,14 @@
+---
+import type { PubEntry } from "@/types";
+import BaseLayout from "@components/base/BaseLayout.astro";
+import PublicationCard from "@/components/publications/Card.astro";
+
+interface Props {
+  entry: PubEntry;
+}
+
+const { entry }: Props = Astro.props;
+---
+<BaseLayout> 
+    <PublicationCard entry={entry} />
+</BaseLayout>

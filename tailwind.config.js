@@ -53,6 +53,7 @@ module.exports = {
           t: "#ddd",
         },
         border: "#ddd",
+        laser: "#23cc67",
         darkmode: {
           txt: {
             p: "#fff",
