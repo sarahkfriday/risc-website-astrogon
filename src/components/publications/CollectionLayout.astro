@@ -1,24 +1,52 @@
 ---
 import BaseLayout from "@components/base/BaseLayout.astro";
-import PublicationCard from "@/components/publications/Card.astro"; // path to your card component
+import PublicationCard from "@/components/publications/Card.astro";
 import { getCollection } from "astro:content";
 
 const publications = await getCollection("publications");
 
-// Optional: sort by date descending
-publications.sort((a, b) => {
-  const dateA = a.data.date ? new Date(a.data.date).getTime() : 0;
-  const dateB = b.data.date ? new Date(b.data.date).getTime() : 0;
-  return dateB - dateA;
-});
+// Group by year
+const groupedPublications: Record<string, typeof publications> = {};
+
+for (const pub of publications) {
+  const rawDate = pub.data.date;
+  if (!rawDate) continue;
+
+  const pubDate = new Date(rawDate);
+  const year = pubDate.getFullYear().toString();
+
+  if (!groupedPublications[year]) {
+    groupedPublications[year] = [];
+  }
+  groupedPublications[year].push(pub);
+}
+
+// Sort each year's publications by month (descending)
+for (const year in groupedPublications) {
+  groupedPublications[year].sort((a, b) => {
+    const dateA = new Date(a.data.date).getTime();
+    const dateB = new Date(b.data.date).getTime();
+    return dateB - dateA; // Descending by full date
+  });
+}
+
+// Sort years descending
+const sortedYears = Object.keys(groupedPublications).sort((a, b) => Number(b) - Number(a));
 ---
+
 <BaseLayout title="" description="">
 
 <section class="max-w-1xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto px-4 py-12">
-
-  <div class="flex flex-col gap-8">
-    {publications.map((entry) => (
-      <PublicationCard entry={entry} />
-    ))}
-  </div>
+  {sortedYears.map((year) => (
+    <div class="mb-12" key={year}>
+      <h3 class="text-2xl font-semibold mb-6">{year}</h3>
+      <div class="flex flex-col gap-8">
+        {groupedPublications[year].map((entry) => (
+          <PublicationCard entry={entry} />
+        ))}
+      </div>
+    </div>
+  ))}
 </section>
+
+</BaseLayout>

@@ -6,6 +6,7 @@ import { Image } from "astro:assets";
 import { FaGlobe } from "react-icons/fa6";
 import { FaCode } from "react-icons/fa6";
 import { FaRegFilePdf } from "react-icons/fa";
+import ExampleImage from "@assets/publications/teasers/example.png"
 
 interface Props {
   entry: PubEntry;
@@ -18,24 +19,22 @@ const {
   projectPage,
   projectCode,
   projectPdf,
-  image,
   imageAlt
 } = entry.data;
 
+const pubImage = entry.data.image ? entry.data.image : ExampleImage;
 const entryDate = entry.data.date ? formatDate(entry.data.date) : null;
 const publicationVenue = entry.body ? plainify(entry.body) : null;
 
 ---
 
 <article class="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 items-start">
-  {image && (
     <Image
-      src={image}
+      src={pubImage}
       alt={imageAlt}
-      class="w-32 h-auto object-cover rounded-lg shadow-md"
+      class="w-32 h-auto object-cover"
       loading="lazy"
-    />
-  )}
+  />
 
   <div class="flex flex-col gap-2">
     <h4 class="text-lg font-bold">{title}</h4>
