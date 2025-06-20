@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img src="src/assets/logos/RISClogo-whiteoutline.svg" style="height:80%;" alt="RISc Logo" align="center" />
+  <img src="src/assets/logos/RISClogo-whiteoutline.svg" style="height:30%;" alt="RISc Logo" align="center" />
 </div>
 
 ---
@@ -8,12 +8,15 @@
 This is the RISc Lab website, built using Atro with the Atrogon template.
 
 ## Features
+- light/dark mode
+- responsive layout
+- searching for publications based on title
 
-### Folder Structure
+## Adding Content
 Most of everything you will need to update is in the ```src/content``` and ```src/assets``` folders. 
 
 - ```src/content``` : markdown files
-- ```src/assets``` : images in webp format
+- ```src/assets``` : images in ```.webp``` format
 
 ``` bash
 ├── src
@@ -47,61 +50,36 @@ Most of everything you will need to update is in the ```src/content``` and ```sr
 │   │   └── publications
 ```
 
+### Assets
+- carousel: images that cycle in the banner carousel on the home page
+- logos: RISc lab logos, as well as funding sources and collaborators
+- news: images that correspond with news articles
+- people: images that correspond with people cards
+- publications/teasers: teaser images
 
-- Blog
-  - Implements **Categories** and **Tags**, for easy filtering and searching
-- Documentation
-  - **Multi-level** document structure
-  - Toggleable **Doc Browser** sidebar
-  - Toggleable **Table of Contents** sidebar
-- Recipes
-  - Demonstrates a highly **templated structure**
-- Authors - A collection that can **link entries across collections** by the Author field
-- Poetry - A trim interface for a lightweight collection, demonstrating pagination over the content pages
-- Index Cards - A variation on the "Poetry" layout, where all content is kept in a single file, and displayed in a single page
-- And more:
-  - Homepage
-  - About/Bio
-  - Portfolio
-  - Terms and Conditions
-  - 404 page
+### Content
+Each individual item that you want to show needs its own ```.md``` file. 
 
-#### Content Components & Features
+- about: the "about" snippet that is displayed under the logo and image banner carousel
+- awards: entries for each award
+- home: initializes the home page
+- news: news entries
+- people: entries for each person, organized by degree type in subfolders
+- publications: entries for each publication
 
-- **Accordion**/collapsible section
-- **Tabs** section
-- **Code Block** with syntax highlighting
-- **Quote Block**
-- **Notice Blocks** - note, tip, info, & warning
-- **Embedded YouTube Video**
-- Integrated **LaTeX** support for inline and block mathematical expressions
-- All the standard **MD/MDX** features, including footnotes, tables, and more
+The easiest way to create a new item is to copy an existing ```.md``` file and replace the content inside with the new information. The ```.md``` files each start with some frontmatter, followed by the body content like so:
 
-### Additional Features
-
-- Comprehensive **Light Mode** and **Dark Mode** support, with automatic detection of system preference
-- **Searchablility** over all content you choose to include
-- **Adaptive Layout** for all screen sizes, from phone a to a desktop monitor
-- **Tool Tips** that can be added seamlessly to any interactable element
-- **Breadcrumbs** for rapid navigation
-- Auto-populating **Related Content** section available for any content collection
-- Auto-calculating **Reading Time** available for any content collection
-- Togglable **Frosted Glass** effect on all components
-- Easily customizable color scheme and typography
-- Animated component **Transitions** for an elegant flourish
-- **Pagination** for any content collection
-- Component for **Social Media** sharing
-- Built-in patterns for **Search Engine Optimization**
+``` bash
+---
+title: 
+description:
+image:
+otherParams:
+---
+Content
+```
 
 Every one of these features was designed with modularity and customizability in mind, for the smoothest development experience possible. For more details, see [docs/customization.md](docs/customization.md).
-
-## Recommended Technologies
-
-- [Git](https://git-scm.com)
-- [Node Version Manager](https://github.com/nvm-sh/nvm)
-- [Visual Studio Code](https://code.visualstudio.com/)
-
-See [docs/tech-stack.md](docs/tech-stack.md) for more details.
 
 ## Development Instructions
 
