@@ -1,6 +1,6 @@
 ---
 title: Kelly Lao
-image: "@assets/people/KL.png"
+image: "@assets/people/KL.webp"
 startYear: "2025"
 pronouns: "she/her"
 ---

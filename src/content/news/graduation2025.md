@@ -1,6 +1,6 @@
 ---
 title: Congratulations 2025 Graduates!
-image: "@assets/news/graduation2025.png"
+image: "@assets/news/graduation2025.webp"
 date: 2025-06-15
 ---
 

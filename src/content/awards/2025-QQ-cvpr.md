@@ -1,5 +1,5 @@
 ---
-image: "@assets/people/QQ.jpg"
+image: "@assets/people/QQ.webp"
 year: 2025
 title: "CVPR Poster"
 awardLink: https://dartmouth-risc-lab.github.io/event-field-website/

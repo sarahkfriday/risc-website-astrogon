@@ -1,7 +1,7 @@
 ---
 title: "Neural volumetric reconstruction for coherent synthetic aperture sonar"
 date: 2023-07-01
-image: "@assets/publications/teasers/neural-volumetric-reconstruction.png"
+image: "@assets/publications/teasers/neural-volumetric-reconstruction.webp"
 authors:
   - name: Albert Reed
     affiliation: ASU

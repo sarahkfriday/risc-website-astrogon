@@ -1,6 +1,6 @@
 ---
 title: Dhawal Sirikonda
-image: "@assets/people/DS.jpg"
+image: "@assets/people/DS.webp"
 startYear: "2023"
 pronouns: "he/him"
 social: 

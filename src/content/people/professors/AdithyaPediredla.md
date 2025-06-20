@@ -1,6 +1,6 @@
 ---
 title: Adithya Pediredla
-image: "@assets/people/AP.jpeg"
+image: "@assets/people/AP.webp"
 startYear: "2023"
 pronouns: "he/him"
 social: 

@@ -1,7 +1,7 @@
 ---
 title: "Structured light with a million light planes per second"
 date: 2025-11-27
-image: "@assets/publications/teasers/aosl.png"
+image: "@assets/publications/teasers/aosl.webp"
 authors:
   - name: Dhawal Sirikonda
   - name: Praneeth Chakravarthula

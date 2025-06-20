@@ -1,7 +1,7 @@
 ---
 title: "Event fields: Capturing light fields at high speed, resolution, and dynamic range"
 date: 2025-06-01
-image: "@assets/publications/teasers/event-field.png"
+image: "@assets/publications/teasers/event-field.webp"
 authors:
   - name: Quinton Qu
   - name: Zihao Zou

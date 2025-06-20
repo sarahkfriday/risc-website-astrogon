@@ -1,5 +1,5 @@
 ---
-image: "@assets/people/QQ.jpg"
+image: "@assets/people/QQ.webp"
 year: 2024
 title: "ICCP Photography Competition"
 awardLink: https://iccp2024.iccp-conference.org/awards/

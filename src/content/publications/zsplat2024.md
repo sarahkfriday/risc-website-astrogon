@@ -1,7 +1,7 @@
 ---
 title: "AONeuS: A neural rendering framework for acoustic-optical sensor fusion"
 date: 2024-11-01
-image: "@assets/publications/teasers/z-splat.png"
+image: "@assets/publications/teasers/z-splat.webp"
 authors:
   - name: Quinton Qu
   - name: Omkar Vengurlekar

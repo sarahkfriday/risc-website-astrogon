@@ -1,7 +1,7 @@
 ---
 title: "AONeuS: A neural rendering framework for acoustic-optical sensor fusion"
 date: 2024-07-01
-image: "@assets/publications/teasers/AONeuS.png"
+image: "@assets/publications/teasers/AONeuS.webp"
 authors:
   - name: Mohamad Qaadri
     affiliation: CMU

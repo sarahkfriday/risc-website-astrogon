@@ -1,7 +1,7 @@
 ---
 title: "Optimized virtual optical waveguides enhance light throughput in scattering media"
 date: 2023-08-10
-image: "@/assets/publications/teasers/optimized-virtual-optical-waveguides.png"
+image: "@/assets/publications/teasers/optimized-virtual-optical-waveguides.webp"
 authors:
   - name: Adithya Pediredla
   - name: Matteo Giuseppe Scopelliti

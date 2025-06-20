@@ -1,6 +1,6 @@
 ---
 title: Science Day 2025
-image: "@assets/news/scienceday2025.jpg"
+image: "@assets/news/scienceday2025.webp"
 date: 2025-04-07
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Doppler Time-of-Flight Rendering"
 date: 2023-09-01
-image: "@assets/publications/teasers/doppler-tof-rendering.png"
+image: "@assets/publications/teasers/doppler-tof-rendering.webp"
 authors:
   - name: Juhyeon Kim
   - name: Wojciech Jarosz

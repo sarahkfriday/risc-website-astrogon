@@ -1,7 +1,7 @@
 ---
 title: "Embodied Visions: Interactive Installations That Reimagine Bodily Presence in Digital Imaging Apparatuses as Shadows"
 date: 2024-12-01
-image: "@assets/publications/teasers/embodied-visions.jpg"
+image: "@assets/publications/teasers/embodied-visions.webp"
 authors:
   - name: Yunzi Shi
   - name: John Bell
