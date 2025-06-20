@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img src="src/assets/logos/RISClogo-whiteoutline.svg" style="height:30%;" alt="RISc Logo" align="center" />
+  <img src="src/assets/logos/RISClogo-whiteoutline.svg" style="height:5%;" alt="RISc Logo" align="center" />
 </div>
 
 ---
@@ -18,6 +18,44 @@ Most of everything you will need to update is in the ```src/content``` and ```sr
 - ```src/content``` : markdown files
 - ```src/assets``` : images in ```.webp``` format
 
+### Assets
+- carousel: images that cycle in the banner carousel on the home page
+- logos: RISc lab logos, as well as funding sources and collaborators
+- news: images that correspond with news articles
+- people: images that correspond with people cards
+- publications/teasers: teaser images
+
+### Content
+Each individual item that you want to show needs its own ```.md``` file. The astro code automatically searches for all entries inside the subfolders, assembling them into a "Collection" object of the same name as the folder. No editing of the astro components needed (unless you want to tweak the style)!
+
+- about: the "about" snippet that is displayed under the logo and image banner carousel
+- awards: entries for each award
+- home: initializes the home page
+- news: news entries
+- people: entries for each person, organized by degree type in subfolders
+- publications: entries for each publication
+
+The easiest way to create a new item is to copy an existing ```.md``` file and replace the content inside with the new information. The ```.md``` files each start with some frontmatter, followed by the body content like so:
+
+``` bash
+---
+title: "Title"
+description: "this is the description"
+image: "@/assets/example.webp"
+otherParams:
+  link: "https://github.com"
+  year: "2022"
+---
+Content
+```
+If you need to see what frontmatter variables exist and expect as input types, you can look at the ```config.ts``` file and find the relevant collection definition. For instance, if you put the wrong type in you may get an error that looks like this:
+
+```bash
+14:24:41 [ERROR] [InvalidContentEntryDataError] people → phd/quintonqu data does not match collection schema.
+startYear: Expected type `"string"`, received `"number"`
+```
+
+## Folder structure
 ``` bash
 ├── src
 │   ├── assets
@@ -48,35 +86,6 @@ Most of everything you will need to update is in the ```src/content``` and ```sr
 │   │   │   ├── professors
 │   │   │   └── undergraduates
 │   │   └── publications
-```
-
-### Assets
-- carousel: images that cycle in the banner carousel on the home page
-- logos: RISc lab logos, as well as funding sources and collaborators
-- news: images that correspond with news articles
-- people: images that correspond with people cards
-- publications/teasers: teaser images
-
-### Content
-Each individual item that you want to show needs its own ```.md``` file. 
-
-- about: the "about" snippet that is displayed under the logo and image banner carousel
-- awards: entries for each award
-- home: initializes the home page
-- news: news entries
-- people: entries for each person, organized by degree type in subfolders
-- publications: entries for each publication
-
-The easiest way to create a new item is to copy an existing ```.md``` file and replace the content inside with the new information. The ```.md``` files each start with some frontmatter, followed by the body content like so:
-
-``` bash
----
-title: 
-description:
-image:
-otherParams:
----
-Content
 ```
 
 Every one of these features was designed with modularity and customizability in mind, for the smoothest development experience possible. For more details, see [docs/customization.md](docs/customization.md).
