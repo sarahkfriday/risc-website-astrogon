@@ -12,6 +12,7 @@ This is the RISc Lab website, built using Atro with the Atrogon template.
 ### Folder Structure
 Most of everything you will need to update is in the src/content and src/assets folders.
 
+```bash
 .
 ├── LICENSE
 ├── README.md
@@ -72,7 +73,7 @@ Most of everything you will need to update is in the src/content and src/assets 
 │   └── types
 ├── tailwind.config.js
 └── tsconfig.json
-
+```
 
 
 - Blog
