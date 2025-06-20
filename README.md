@@ -88,18 +88,18 @@ The ```loader``` tells astro to grab all ```.md``` or ```.mdx``` files that don'
 
 ### Conditional Formatting
 
-- ```people```
+```people```
  - no ```image``` defaults to example
  - entries get sorted in *ascending* order according to ```startYear```
  - no ```endYear``` defaults to "present", otherwise gets put into alumni list
 
-- ```publications```
+```publications```
  - no ```image``` defaults to example
 
-- ```awards```
+```awards```
  - entries get sorted in *descending* order according to ```year```
 
-- ```news```
+```news```
  - entries get sorted in *descending* order by ```date```
 
 ## Changing the style
