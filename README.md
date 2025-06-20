@@ -11,34 +11,42 @@ This is the RISc Lab website, built using Atro with the Atrogon template.
 
 ### Folder Structure
 Most of everything you will need to update is in the src/content and src/assets folders.
-
-```bash
+``` bash
 .
-├── LICENSE
-├── README.md
-├── astro.config.mjs
-├── astrogon-docs
-├── package-lock.json
-├── package.json
-├── postcss.config.js
-├── public
-│   ├── CNAME
-│   ├── favicon
-│   ├── fonts
-│   ├── robots.txt
-│   └── site.webmanifest
+.
+.
 ├── src
 │   ├── assets
+│   │   ├── carousel
+│   │   ├── convert_imgs_webp.sh
+│   │   ├── logos
+│   │   │   ├── I-risc.webp
+│   │   │   ├── R-risc.webp
+│   │   │   ├── RISClogo-whiteoutline.svg
+│   │   │   ├── Sc-risc.webp
+│   │   │   ├── collaborators
+│   │   │   └── funding
+│   │   ├── news
+│   │   ├── people
+│   │   └── publications
+│   │       └── teasers
 │   ├── components
 │   ├── content
-│   ├── env.d.ts
-│   ├── lib
-│   ├── pages
-│   ├── scripts
-│   ├── styles
-│   └── types
-├── tailwind.config.js
-└── tsconfig.json
+│   │   ├── about
+│   │   ├── awards
+│   │   ├── config.ts
+│   │   ├── home
+│   │   ├── news
+│   │   ├── people
+│   │   │   ├── -index.md
+│   │   │   ├── masters
+│   │   │   ├── phd
+│   │   │   ├── professors
+│   │   │   └── undergraduates
+│   │   └── publications
+.
+.
+.
 ```
 
 
