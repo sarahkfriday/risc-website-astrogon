@@ -12,10 +12,18 @@ This is the RISc Lab website, built using Atro with the Atrogon template.
 - responsive layout
 - searching for publications based on title
 
+## Development Instructions (taken from Astrogon)
+
+1. Fork this repository to your own GitHub account, then clone it to your local machine
+2. Use Node 22: `nvm install 22` or `nvm use 22`
+3. From the project directory, install Node dependencies: `npm install`
+4. From the project directory, build: `npm run dev`
+5. See your changes live at `http://localhost:4321`
+
 ## Adding Content
 Most of everything you will need to update is in the ```src/content``` and ```src/assets``` folders. 
 
-- ```src/content``` : markdown files
+- ```src/content``` : markdown files that contain the content
 - ```src/assets``` : images in ```.webp``` format
 
 ### Assets
@@ -48,12 +56,54 @@ otherParams:
 ---
 Content
 ```
-If you need to see what frontmatter variables exist and expect as input types, you can look at the ```config.ts``` file and find the relevant collection definition. For instance, if you put the wrong type in you may get an error that looks like this:
+If you need to see what frontmatter expects as input, you can look at the ```config.ts``` file and find the relevant collection definition. For instance, if you put the wrong type you may get an error that looks like this:
 
 ```bash
 14:24:41 [ERROR] [InvalidContentEntryDataError] people → phd/quintonqu data does not match collection schema.
 startYear: Expected type `"string"`, received `"number"`
 ```
+
+### Collections
+Astro uses Collections to create groups of content that have the same structure. For example, this is the People collection definition:
+
+```javascript
+const people = defineCollection({
+  loader: glob({
+    pattern: "**\/[^_]*.{md,mdx}",
+    base: "./src/content/people",
+  }),
+  schema: ({ image }) =>
+    searchable.extend({
+      title: z.string(),
+      image: image().optional(),
+      imageAlt: z.string().default(""),
+      startYear: z.string().default("2022"), 
+      endYear: z.string().default("present"),
+      pronouns: z.string().optional(),
+      social: social.optional()
+    }),
+});
+```
+The ```loader``` tells astro to grab all ```.md``` or ```.mdx``` files that don't start with an underscore from the folder ```./src/content/people```. Then then ```schema``` defines the variables that get filled out in the frontmatter. Notice some variables are optional, or have defaults. The code can then use these variables to conditionally style things. For instance, for the People and Publication collections, if you don't provide an image then the code uses an example default image.
+
+### Conditional Formatting
+
+- ```people```
+ - no ```image``` defaults to example
+ - entries get sorted in *ascending* order according to ```startYear```
+ - no ```endYear``` defaults to "present", otherwise gets put into alumni list
+
+- ```publications```
+ - no ```image``` defaults to example
+
+- ```awards```
+ - entries get sorted in *descending* order according to ```year```
+
+- ```news```
+ - entries get sorted in *descending* order by ```date```
+
+## Changing the style
+If you need to change the style, you can modify the ```.astro``` files found in the ```./components``` folder. The people, publications, awards, and news elements are all Cards that get grouped and shown in a CollectionLayout. Therefore, depending on what you want to edit you may edit either the Card or the CollectionLayout. The style mostly uses Tailwind CSS classes. 
 
 ## Folder structure
 ``` bash
@@ -88,24 +138,9 @@ startYear: Expected type `"string"`, received `"number"`
 │   │   └── publications
 ```
 
-Every one of these features was designed with modularity and customizability in mind, for the smoothest development experience possible. For more details, see [docs/customization.md](docs/customization.md).
-
-## Development Instructions
-
-1. Fork this repository to your own GitHub account, then clone it to your local machine
-2. Use Node 22: `nvm install 22` or `nvm use 22`
-3. From the project directory, install Node dependencies: `npm install`
-4. From the project directory, build: `npm run dev`
-5. See your changes live at `http://localhost:4321`
+## Astrogon
+The original Astrogon documentation can be found in the folder ```./astrogon-docs```
 
 ## License
-
 Astrogon is licensed under the [MIT License](LICENSE).
 
-## Acknowledgments
-
-This template was originally inspired by the structures of [zeon-studio](https://github.com/zeon-studio)'s [astroplate](https://github.com/zeon-studio/astroplate), [jordienr](https://github.com/jordienr)'s [astro-design-system](https://github.com/jordienr/astro-design-system) and [TheOtterlord](https://github.com/TheOtterlord)'s [manual](https://github.com/TheOtterlord/manual).
-
-## Sponsorship
-
-[reednel](https://github.com/reednel) has dedicated hundreds of hours to building this template, and continues to maintain and improve on it. This software is fully Free and Open Source, but if you find value in it, a small donation [[here](https://github.com/sponsors/reednel)] would be warmly appreciated.
