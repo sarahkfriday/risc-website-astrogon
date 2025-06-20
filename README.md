@@ -10,9 +10,12 @@ This is the RISc Lab website, built using Atro with the Atrogon template.
 ## Features
 
 ### Folder Structure
-Most of everything you will need to update is in the ```src/content``` and ```src/assets``` folders.
+Most of everything you will need to update is in the ```src/content``` and ```src/assets``` folders. 
+
+- ```src/content``` : markdown files
+- ```src/assets``` : images in webp format
+
 ``` bash
-|
 ├── src
 │   ├── assets
 │   │   ├── carousel
@@ -42,7 +45,6 @@ Most of everything you will need to update is in the ```src/content``` and ```sr
 │   │   │   ├── professors
 │   │   │   └── undergraduates
 │   │   └── publications
-|
 ```
 
 
