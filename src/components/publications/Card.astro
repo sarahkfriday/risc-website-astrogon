@@ -27,12 +27,11 @@ const {
 } = entry.data;
 
 const pubImage = entry.data.image ? entry.data.image : ExampleImage;
-const entryDate = entry.data.date ? formatDate(entry.data.date) : null;
 const publicationVenue = entry.body ? plainify(entry.body) : null;
 
 ---
 
-<article class="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 items-start">
+<article class="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 items-start mx-[1rem] md:mx-[4rem] lg:mx-[6rem]">
   <div class="relative w-32 h-auto">
     <Image
       src={pubImage}

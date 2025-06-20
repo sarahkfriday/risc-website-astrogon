@@ -1,103 +1,54 @@
 ---
 import BaseLayout from "@components/base/BaseLayout.astro";
-import BannerCarousel from "@components/base/BannerCarousel.astro";
+import BannerBlock from "@components/base/BannerBlock.astro";
+// import AboutEntry from "@/components/home/AboutEntry.astro"; 
 import AwardsCollection from "@/components/awards/CollectionLayout.astro";
 import FundingEntry from "@/components/home/FundingEntry.astro"; 
 // import CollabEntry from "@/components/home/CollabEntry.astro"; 
 import NewsCollection from "@/components/news/CardCollection.astro";
 
-import type { HomeEntry } from "@/types";
-import { Image } from "astro:assets";
-import RRisc from '../../assets/logos/R-risc.png';
-import IRisc from '../../assets/logos/I-risc.png';
-import ScRisc from '../../assets/logos/Sc-risc.png';
-
-interface Props {
-  entry: HomeEntry;
-}
-
-const { entry } = Astro.props;
-const { image, imageAlt, title, content, button } = entry.data;
 ---
 
 <BaseLayout>
-  <!-- Banner -->
-  <section class="section">
-    <BannerCarousel />
-      <div class="logo-container">
-        <div class="image-container-bottom">
-          <Image src={RRisc} alt="" class="rotating-image bottom"/>
-        </div>
-        <div class="image-container-middle">
-          <Image src={IRisc} alt="" class="rotating-image middle"/>
-        </div>
-        <div class="image-container-top">
-          <Image src={ScRisc} alt="" class="rotating-image top"/>
-        </div>
-      </div>
-      <div class="word-container">
-        <h1 class="word-left">rendering</h1>
-        <h1 class="word-middle">imaging</h1>
-        <h1 class="word-right">science</h1>
-      </div>
+  
+  <!-- Banner with logo-->
+  <section class="section mb-[5rem] md:mb-[8rem]">
+    <BannerBlock />
   </section>
+
+  <!-- About Section -->
+  <!-- <section>
+    <div class="row flex mt-[3rem] px-[1rem] md:px-[3rem] lg:px-[6rem]">
+      <AboutEntry/>
+    </div>
+  </section> -->
+
+  <!-- Awards Section -->
   <section>
     <div class="row flex mt-[3rem] px-[1rem] md:px-[3rem] lg:px-[6rem]">
       <AwardsCollection/>
     </div>
   </section>
+  
+  <!-- News Section -->
   <section>
     <div class="row flex mt-[3rem] px-[1rem] md:px-[3rem] lg:px-[6rem]">
       <NewsCollection/>
     </div>
   </section>
+
+  <!-- Collaborators Section -->
   <!-- <section>
     <div class="row flex mt-[3rem] px-[1rem] md:px-[3rem] lg:px-[6rem]">
       <CollabEntry/>
     </div>
   </section>  -->
+
+  <!-- Funding Section -->
   <section>
-    <div class="row flex mt-[3rem] px-[1rem] md:px-[3rem] lg:px-[6rem]">
+    <div class="row flex my-[2rem] px-[1rem] md:px-[3rem] lg:px-[6rem]">
       <FundingEntry/>
     </div>
   </section> 
 </BaseLayout>
-
-<script is:inline>
-  function animatePage() {
-    // Animate rotating images
-    document.querySelectorAll('.rotating-image').forEach(img => {
-      img.classList.add('loading');
-
-      requestAnimationFrame(() => {
-        img.classList.add('loaded');
-      });
-
-      img.addEventListener('transitionend', () => {
-        img.classList.remove('loading');
-      }, { once: true });
-    });
-
-    // Animate word text on load
-    const words = document.querySelectorAll('.word-left, .word-middle, .word-right');
-    requestAnimationFrame(() => {
-      words.forEach((el, index) => {
-        el.classList.remove('preload');
-        setTimeout(() => {
-          el.classList.add('loaded');
-        }, 100 + index * 250);
-      });
-    });
-  }
-
-  // Call on initial load
-  if (document.readyState === 'loading') {
-    window.addEventListener('DOMContentLoaded', animatePage);
-  } else {
-    animatePage();
-  }
-
-  // Optional: Support Astro partial navigation (if using it)
-  document.addEventListener('astro:after-swap', animatePage);
-</script>
 

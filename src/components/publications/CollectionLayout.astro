@@ -36,7 +36,7 @@ const sortedYears = Object.keys(groupedPublications).sort((a, b) => Number(b) - 
 
 <BaseLayout title="" description="">
 
-<section class="max-w-1xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl mx-auto px-4 py-12">
+<section class="px-[1rem] md:px-[3rem] lg:px-[6rem] py-12">
   {sortedYears.map((year) => (
     <div class="mb-12" key={year}>
       <h3 class="text-2xl font-semibold mb-6 border-b border-border dark:border-darkmode-border">{year}</h3>

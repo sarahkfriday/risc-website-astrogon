@@ -1,6 +1,6 @@
 ---
-title: "Event fields: Capturing light fields at high speed, resolution, and dynamic range"
-date: 2025-05-01
+title: "Structured light with a million light planes per second"
+date: 2025-11-27
 image: "@assets/publications/teasers/aosl.png"
 authors:
   - name: Dhawal Sirikonda

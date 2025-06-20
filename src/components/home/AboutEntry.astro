@@ -1,0 +1,14 @@
+---
+import { getEntry } from "astro:content";
+
+// Load the Markdown file
+const { data, render } = await getEntry("about","about");
+const { Content } = await render();
+
+---
+
+<section class="py-[2rem]">
+    <div class="text-center max-w-3xl mx-auto px-[2rem]">
+        <Content />
+    </div>
+</section>

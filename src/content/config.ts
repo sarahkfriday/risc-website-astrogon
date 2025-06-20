@@ -11,6 +11,11 @@ const searchable = z.object({
   draft: z.boolean().default(false),
 });
 
+const about = z.object({
+  title: z.string().default(""),
+  description: z.string().default("")
+});
+
 const social = z.object({
   email: z.string().optional(),
   github: z.string().optional(),
@@ -105,6 +110,7 @@ const home = defineCollection({
 
 // Export collections
 export const collections = {
+  about,
   people,
   awards,
   publications,

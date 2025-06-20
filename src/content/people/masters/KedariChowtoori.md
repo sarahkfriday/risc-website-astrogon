@@ -5,5 +5,5 @@ startYear: "2024"
 endYear: "2025"
 pronouns: "he/him"
 social: 
-    website: "https://github.com/"
+    website: "https://kedari-chowtoori.vercel.app/"
 ---

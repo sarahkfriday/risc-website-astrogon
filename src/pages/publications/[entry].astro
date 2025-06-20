@@ -1,0 +1,30 @@
+---
+import type { PubEntry } from "@/types";
+import BaseLayout from "@components/base/BaseLayout.astro";
+import PublicationCard from "@/components/publications/Card.astro";
+import { getEntries } from "@lib/contentParser";
+import { sortByDate } from "@lib/sortFunctions";
+
+interface Props {
+  entry: PubEntry;
+}
+
+export async function getStaticPaths() {
+  const entries = (await getEntries("publications", sortByDate)) as PubEntry[];
+  const paths = entries.map((entry) => ({
+    params: {
+      entry: entry.id,
+    },
+    props: { entry },
+  }));
+  return paths;
+}
+
+const { entry }: Props = Astro.props;
+
+---
+<BaseLayout> 
+    <section class="px-[2rem] md:px-[3rem] lg:px-[6rem] py-12">
+        <PublicationCard entry={entry} />
+    </section>
+</BaseLayout>

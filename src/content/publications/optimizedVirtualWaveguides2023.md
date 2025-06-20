@@ -1,6 +1,6 @@
 ---
-title: "Snapshot Lidar: Fourier Embedding of Amplitude and Phase for Single-Image Depth Reconstruction"
-date: 2023-06-01
+title: "Optimized virtual optical waveguides enhance light throughput in scattering media"
+date: 2023-08-10
 image: "@/assets/publications/teasers/optimized-virtual-optical-waveguides.png"
 authors:
   - name: Adithya Pediredla

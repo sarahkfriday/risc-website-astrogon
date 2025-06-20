@@ -1,6 +1,6 @@
 ---
 title: "Event fields: Capturing light fields at high speed, resolution, and dynamic range"
-date: 2025-04-01
+date: 2025-06-01
 image: "@assets/publications/teasers/event-field.png"
 authors:
   - name: Quinton Qu
@@ -17,4 +17,4 @@ projectPdf: "https://dartmouth-risc-lab.github.io/event-field-website/static/pdf
 award: Highlight
 ---
 
-CVPR 2025 (Highlight)
+Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition
