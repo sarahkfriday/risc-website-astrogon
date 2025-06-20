@@ -1,5 +1,5 @@
 
-<div style="max-height:150px;">
+<div>
   <img src="src/assets/logos/RISClogo-whiteoutline.svg" alt="RISc Logo"/>
 </div>
 
