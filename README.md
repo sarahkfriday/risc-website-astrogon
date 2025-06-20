@@ -29,42 +29,8 @@ Most of everything you will need to update is in the src/content and src/assets 
 │   └── site.webmanifest
 ├── src
 │   ├── assets
-│   │   ├── carousel
-│   │   ├── convert_imgs_webp.sh
-│   │   ├── logos
-│   │   │   ├── I-risc.webp
-│   │   │   ├── R-risc.webp
-│   │   │   ├── RISClogo-whiteoutline.svg
-│   │   │   ├── Sc-risc.webp
-│   │   │   ├── collaborators
-│   │   │   └── funding
-│   │   ├── news
-│   │   ├── people
-│   │   └── publications
-│   │       └── teasers
 │   ├── components
-│   │   ├── awards
-│   │   ├── base
-│   │   ├── common
-│   │   ├── home
-│   │   ├── news
-│   │   ├── not-found
-│   │   ├── people
-│   │   ├── publications
-│   │   └── search
 │   ├── content
-│   │   ├── about
-│   │   ├── awards
-│   │   ├── config.ts
-│   │   ├── home
-│   │   ├── news
-│   │   ├── people
-│   │   │   ├── -index.md
-│   │   │   ├── masters
-│   │   │   ├── phd
-│   │   │   ├── professors
-│   │   │   └── undergraduates
-│   │   └── publications
 │   ├── env.d.ts
 │   ├── lib
 │   ├── pages
