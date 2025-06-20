@@ -59,7 +59,7 @@ Content
 If you need to see what frontmatter expects as input, you can look at the ```config.ts``` file and find the relevant collection definition. For instance, if you put the wrong type you may get an error that looks like this:
 
 ```bash
-14:24:41 [ERROR] [InvalidContentEntryDataError] people → phd/quintonqu data does not match collection schema.
+14:24:41 [ERROR] [InvalidContentEntryDataError] people → phd/janedoe data does not match collection schema.
 startYear: Expected type `"string"`, received `"number"`
 ```
 
