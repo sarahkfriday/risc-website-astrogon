@@ -5,7 +5,7 @@
 
 ---
 
-This is the RISc Lab website, built using Atro with the Atrogon template.
+This is the RISc Lab website, built using Atro with the [Astrogon](https://github.com/astrogon/astrogon) template.
 
 ## Features
 - light/dark mode
@@ -104,6 +104,9 @@ The ```loader``` tells astro to grab all ```.md``` or ```.mdx``` files that don'
 
 ## Changing the style
 If you need to change the style, you can modify the ```.astro``` files found in the ```./components``` folder. The people, publications, awards, and news elements are all Cards that get grouped and shown in a CollectionLayout. Therefore, depending on what you want to edit you may edit either the Card or the CollectionLayout. The style mostly uses Tailwind CSS classes. 
+
+## SEO
+You may need to change the ```./public/CNAME``` and ```./public/robots.txt``` files to point to the correct domain name or hide certain routes. 
 
 ## Folder structure
 ``` bash
