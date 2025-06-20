@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img src="src/assets/logos/RISClogo-whiteoutline.svg" style="height:5%;" alt="RISc Logo" align="center" />
+  <img src="src/assets/logos/RISClogo-whiteoutline.svg" style="max-height:20%;" alt="RISc Logo" align="center" />
 </div>
 
 ---
