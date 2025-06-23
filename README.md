@@ -56,7 +56,7 @@ otherParams:
 ---
 Content
 ```
-If you need to see what frontmatter expects as input, you can look at the ```config.ts``` file and find the relevant collection definition. For instance, if you put the wrong type you may get an error that looks like this:
+If you need to see what the frontmatter expects as input, you can look at the ```config.ts``` file and find the relevant collection definition. For instance, if you put the wrong type you may get an error that looks like this:
 
 ```bash
 14:24:41 [ERROR] [InvalidContentEntryDataError] people → phd/janedoe data does not match collection schema.
@@ -84,7 +84,7 @@ const people = defineCollection({
     }),
 });
 ```
-The ```loader``` tells astro to grab all ```.md``` or ```.mdx``` files that don't start with an underscore from the folder ```./src/content/people```. Then then ```schema``` defines the variables that get filled out in the frontmatter. Notice some variables are optional, or have defaults. The code can then use these variables to conditionally style things. For instance, for the People and Publication collections, if you don't provide an image then the code uses an example default image.
+The ```loader``` tells astro to grab all ```.md``` or ```.mdx``` files that don't start with an underscore from the folder ```./src/content/people```. Then the ```schema``` defines the variables that get filled out in the frontmatter. Notice some variables are optional, or have defaults. The code can then use these variables to conditionally style things. For instance, for the People and Publication collections, if you don't provide an image then the code uses an example default image.
 
 ### Conditional Formatting
 
